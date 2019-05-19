@@ -9,6 +9,9 @@ public class FileWriterFactory {
         if (path.endsWith(".csv")) {
             return new CsvFileWriter();
         }
+        if (path.endsWith(".xlsx")) {
+            return new ExcelFileWriter();
+        }
 
         return null;
     }

@@ -11,8 +11,8 @@ import java.util.Map;
 public class App
 {
     public static void main( String[] args ) {
-        String input = "/home/michal/SDA/Java15/Projekty/converter/src/main/resources/persons.xlsx";
-        String output = "/home/michal/output_persons.json";
+        String input = "/home/michal/SDA/Java15/Projekty/converter/src/main/resources/cars.csv";
+        String output = "/home/michal/output_cars.xlsx";
 
         FileReaderFactory readerFactory = new FileReaderFactory();
         FileWriterFactory writerFactory = new FileWriterFactory();
