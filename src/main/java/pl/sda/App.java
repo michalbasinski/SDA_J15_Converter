@@ -1,12 +1,6 @@
 package pl.sda;
 
-import pl.sda.readers.FileReaderFactory;
-import pl.sda.readers.SDAFileReader;
-import pl.sda.writers.FileWriterFactory;
-import pl.sda.writers.SDAFileWriter;
-
-import java.util.List;
-import java.util.Map;
+import pl.sda.utils.SDAFileConverter;
 
 public class App
 {
@@ -14,13 +8,7 @@ public class App
         String input = "/home/michal/SDA/Java15/Projekty/converter/src/main/resources/cars.csv";
         String output = "/home/michal/output_cars.xlsx";
 
-        FileReaderFactory readerFactory = new FileReaderFactory();
-        FileWriterFactory writerFactory = new FileWriterFactory();
-
-        SDAFileReader reader = readerFactory.produce(input);
-        SDAFileWriter writer = writerFactory.produce(output);
-
-        List<Map<String, String>> records = reader.read(input);
-        writer.write(records, output);
+        SDAFileConverter converter = new SDAFileConverter();
+        converter.convert(input, output);
     }
 }
