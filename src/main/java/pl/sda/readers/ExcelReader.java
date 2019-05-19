@@ -1,6 +1,7 @@
 package pl.sda.readers;
 
 import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.CellType;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
@@ -53,7 +54,8 @@ public class ExcelReader implements SDAFileReader {
                 while (cellIterator.hasNext()) {
                     Cell cell = cellIterator.next();
                     String header = headers.get(counter);
-                    record.put(header, cell.getStringCellValue());
+                    String value = getValueToSave(cell);
+                    record.put(header, value);
                     counter++;
                 }
                 result.add(record);
@@ -66,5 +68,16 @@ public class ExcelReader implements SDAFileReader {
             e.printStackTrace();
         }
         return null;
+    }
+
+    private String getValueToSave(Cell cell) {
+        String value = "";
+        if (CellType.NUMERIC.equals(cell.getCellType())) {
+            value = String.valueOf(cell.getNumericCellValue());
+        }
+        if (CellType.STRING.equals(cell.getCellType())) {
+            value = cell.getStringCellValue();
+        }
+        return value;
     }
 }
