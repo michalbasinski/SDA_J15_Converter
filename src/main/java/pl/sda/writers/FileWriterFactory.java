@@ -6,6 +6,9 @@ public class FileWriterFactory {
         if (path.endsWith(".json")) {
             return new JsonFileWriter();
         }
+        if (path.endsWith(".csv")) {
+            return new CsvFileWriter();
+        }
 
         return null;
     }
